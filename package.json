@@ -1,0 +1,15 @@
+{
+  "name": "@jsumners-nr/native-add",
+  "version": "1.0.0",
+  "main": "lib/binding.js",
+  "scripts": {
+    "install": "node-gyp-build",
+    "build": "prebuildify --napi --strip"
+  },
+  "dependencies": {
+    "node-gyp-build": "^4.8.0"
+  },
+  "devDependencies": {
+    "prebuildify": "^6.0.0"
+  }
+}
