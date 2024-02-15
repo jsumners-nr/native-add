@@ -127,4 +127,5 @@ jobs:
       - run: npm pack
       - uses: actions/upload-artifact@v4
         with:
+          name: npm-module
           path: jsumners-nr-native-add-${{ env.PKG_VERSION }}.tgz
