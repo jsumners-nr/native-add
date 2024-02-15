@@ -8,7 +8,3 @@ const { add } = require('./index')
 test('adds two numbers', () => {
   assert.equal(add(1, 1), 2)
 })
-
-test('fails!', () => {
-  assert.equal(1, 2)
-})
