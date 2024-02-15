@@ -1,8 +1,9 @@
 name: Build
-on:
-  workflow_run:
-    workflows: [Test]
-    types: [completed]
+on: [push, pull_request]
+#on:
+#  workflow_run:
+#    workflows: [Test]
+#    types: [completed]
 permissions:
   contents: read
 
@@ -111,11 +112,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           registry-url: 'https://registry.npmjs.org'
-      - run: mkdir prebuilds
+      - run: |
+          mkdir prebuilds
+          rm -f .gitignore
       - uses: actions/download-artifact@v4
         with:
           path: ${{ github.workspace }}/prebuilds
           merge-multiple: true
-      - run: npm publish --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#      - run: npm publish --access=public
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: echo -e "PKG_VERSION=$(jq -r .version < package.json)" >> "$GITHUB_ENV"
+      - run: npm pack
+      - uses: actions/upload-artifact@v4
+        with:
+          path: jsumners-nr-native-add-${{ env.PKG_VERSION }}.tgz
