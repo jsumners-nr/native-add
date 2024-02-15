@@ -50,7 +50,8 @@ jobs:
 
   test_linux_arm:
     strategy:
-      node: [16, 18, 20]
+      matrix:
+        node: [16, 18, 20]
     runs-on: ubuntu-latest
     name: Linux / Node ${{ matrix.node }} arm64
     steps:
