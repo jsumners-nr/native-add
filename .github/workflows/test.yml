@@ -1,0 +1,46 @@
+name: Test
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test_x86_x64:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [16, 18, 20]
+        arch: [x86, x64]
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} / Node ${{ matrix.node }} ${{ matrix.arch }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use node ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          architecture: ${{ matrix.arch }}
+      - name: Install
+        run: npm install
+      - name: Test
+        run: npm test
+
+  test_arm:
+    strategy:
+      matrix:
+        os: [macos-14]
+        node: [16, 18, 20]
+        arch: [arm64]
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} / Node ${{ matrix.node }} ${{ matrix.arch }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use node ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          architecture: ${{ matrix.arch }}
+      - name: Install
+        run: npm install
+      - name: Test
+        run: npm test

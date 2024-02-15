@@ -4,7 +4,8 @@
   "main": "lib/binding.js",
   "scripts": {
     "install": "node-gyp-build",
-    "build": "prebuildify --napi --strip"
+    "build": "prebuildify --napi --strip",
+    "test": "node --test"
   },
   "dependencies": {
     "node-gyp-build": "^4.8.0"
