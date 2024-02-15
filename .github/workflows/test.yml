@@ -64,8 +64,8 @@ jobs:
       - uses: docker/build-push-action@v5
         with:
           context: .
-          build-args:
-            - NODE_VERSION=${{ matrix.node }}
+          build-args: |
+            NODE_VERSION=${{ matrix.node }}
           file: linux_arm.dockerfile
           tags: linux_arm:latest
           load: true
