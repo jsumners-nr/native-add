@@ -9,6 +9,9 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         node: [16, 18, 20]
         arch: [x86, x64]
+        exclude:
+          # Ubuntu does not ship x86 builds.
+          - { os: ubuntu-latest, arch: x86 }
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} / Node ${{ matrix.node }} ${{ matrix.arch }}
     steps:
