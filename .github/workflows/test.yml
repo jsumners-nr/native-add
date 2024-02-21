@@ -23,8 +23,7 @@ jobs:
           node-version: ${{ matrix.node }}
           architecture: ${{ matrix.arch }}
       - name: Install
-        run: npm install
-      - run: npm rebuild
+        run: npm install --build-from-source
       - run: npm run build
       - name: Test
         run: npm test
@@ -46,8 +45,7 @@ jobs:
           node-version: ${{ matrix.node }}
           architecture: ${{ matrix.arch }}
       - name: Install
-        run: npm install
-      - run: npm rebuild
+        run: npm install --build-from-source
       - run: npm run build
       - name: Test
         run: npm test
@@ -84,7 +82,6 @@ jobs:
           image: linux_arm:latest
           options: --platform linux/arm64
           run: |
-            npm install
-            npm rebuild
+            npm install --build-from-source
             npm run build
             npm test
