@@ -4,10 +4,11 @@
   "main": "./binding.js",
   "scripts": {
     "install": "node-gyp-build",
-    "build": "prebuildify --napi --strip",
+    "build": "prebuildify --strip",
     "test": "node --test"
   },
   "dependencies": {
+    "nan": "^2.18.0",
     "node-gyp-build": "^4.8.0"
   },
   "devDependencies": {

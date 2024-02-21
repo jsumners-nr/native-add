@@ -24,6 +24,8 @@ jobs:
           architecture: ${{ matrix.arch }}
       - name: Install
         run: npm install
+      - run: npm rebuild
+      - run: npm run build
       - name: Test
         run: npm test
 
@@ -45,6 +47,8 @@ jobs:
           architecture: ${{ matrix.arch }}
       - name: Install
         run: npm install
+      - run: npm rebuild
+      - run: npm run build
       - name: Test
         run: npm test
 
@@ -81,4 +85,6 @@ jobs:
           options: --platform linux/arm64
           run: |
             npm install
+            npm rebuild
+            npm run build
             npm test

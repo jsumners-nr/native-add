@@ -1,9 +1,10 @@
 {
   "targets": [{
     "target_name": "native-add",
-    "sources": ["src/add.c"],
+    "sources": ["src/add.cc"],
     "include_dirs": [
-      "src"
+      "src",
+      "<!(node -e \"require('nan')\")"
     ]
   }]
 }
