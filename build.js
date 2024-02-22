@@ -27,6 +27,9 @@ async function main() {
   const args = [
     path.join(__dirname, 'node_modules', 'prebuildify', 'bin.js'),
     '--strip',
+    '--tag-uv',
+    '--tag-armv',
+    '--tag-libc',
     '--target',
     `node@${process.versions.node}`
   ]
