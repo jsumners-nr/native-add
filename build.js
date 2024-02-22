@@ -23,8 +23,9 @@ async function main() {
   await fs.rm(path.join(__dirname, 'build'), {force: true, recursive: true})
   await fs.rm(path.join(__dirname, 'prebuilds'), {force: true, recursive: true})
 
-  const bin = path.join(__dirname, 'node_modules', '.bin', 'prebuildify')
+  const bin = process.argv[0]
   const args = [
+    path.join(__dirname, 'node_modules', 'prebuildify', 'bin.js'),
     '--strip',
     '--target',
     `node@${process.versions.node}`
