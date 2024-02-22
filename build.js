@@ -30,6 +30,7 @@ async function main() {
     '--tag-uv',
     '--tag-armv',
     '--tag-libc',
+    '--napi=false',
     '--target',
     `node@${process.versions.node}`
   ]
