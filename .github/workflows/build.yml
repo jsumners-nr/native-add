@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
-        node: [20]
+        node: [16, 18, 20]
         arch: [ x86, x64 ]
         exclude:
           # Ubuntu does not ship x86 builds.
@@ -34,14 +34,14 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.os }}-${{ matrix.arch }}
+          name: ${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.node }}
           path: prebuilds
 
   build_macos_arm:
     strategy:
       matrix:
         os: [macos-14]
-        node: [20]
+        node: [16, 18, 20]
         arch: [arm64]
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} / Node ${{ matrix.node }} ${{ matrix.arch }}
@@ -60,13 +60,13 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.os }}-${{ matrix.arch }}
+          name: ${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.node }}
           path: prebuilds
 
   build_linux_arm:
     strategy:
       matrix:
-        node: [20]
+        node: [16, 18, 20]
     runs-on: ubuntu-latest
     name: Linux / Node ${{ matrix.node }} arm64
     steps:
@@ -101,7 +101,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: linux-arm64
+          name: ${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.node }}
           path: prebuilds
 
   publish:
