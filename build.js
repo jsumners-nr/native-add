@@ -27,9 +27,13 @@ async function main() {
   const args = [
     path.join(__dirname, 'node_modules', 'prebuildify', 'bin.js'),
     '--strip',
+    // We want to apply all tags since we are building across multiple
+    // Node.js versions. If we don't we will stop on the binaries during
+    // packaging.
     '--tag-uv',
     '--tag-armv',
     '--tag-libc',
+    // We need to be explicit here so that the ABI tag gets applied.
     '--napi=false',
     '--target',
     `node@${process.versions.node}`
