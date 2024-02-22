@@ -8,9 +8,6 @@ on:
         required: false
         default: CHANGELOG.md
 
-permissions:
-  contents: read
-
 jobs:
   build_x86_64:
     strategy:
