@@ -4,7 +4,7 @@
   "main": "./binding.js",
   "scripts": {
     "install": "node-gyp-build",
-    "build": "prebuildify --strip",
+    "build": "node build.js",
     "test": "node --test"
   },
   "dependencies": {
